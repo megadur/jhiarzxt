@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="eAenderung">
+      <h2 data-cy="eAenderungDetailsHeading"><span>E Aenderung</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ eAenderung.id }}</span>
+        </dd>
+        <dt><span>Schluessel</span></dt>
+        <dd>
+          <span>{{ eAenderung.schluessel }}</span>
+        </dd>
+        <dt><span>Doku Rezept</span></dt>
+        <dd>
+          <span>{{ eAenderung.dokuRezept }}</span>
+        </dd>
+        <dt><span>Doku Arzt</span></dt>
+        <dd>
+          <span>{{ eAenderung.dokuArzt }}</span>
+        </dd>
+        <dt><span>Datum</span></dt>
+        <dd>
+          <span>{{ eAenderung.datum | formatMediumDate }}</span>
+        </dd>
+        <dt><span>E Rezept</span></dt>
+        <dd>
+          <div *ngIf="eAenderung.eRezept">
+            <a [routerLink]="['/e-rezept', eAenderung.eRezept?.id, 'view']">{{ eAenderung.eRezept?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/e-aenderung', eAenderung.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

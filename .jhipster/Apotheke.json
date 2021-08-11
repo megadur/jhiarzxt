@@ -1,0 +1,62 @@
+{
+  "name": "Apotheke",
+  "fields": [
+    {
+      "fieldName": "iK",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inhaber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "countryCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "plz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ort",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "str",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hausNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "addrZusatz",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "lieferung",
+      "otherEntityRelationshipName": "apotheke",
+      "relationshipName": "lieferung"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "rechenzentrum",
+      "otherEntityRelationshipName": "apotheke",
+      "relationshipName": "rechenzentrum",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "apotheke",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133119"
+}

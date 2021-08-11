@@ -1,0 +1,67 @@
+{
+  "name": "Muster16",
+  "fields": [
+    {
+      "fieldName": "mRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieferungId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "m16Status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mMuster16Id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIkSend",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIkSnd",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "m16Status",
+      "otherEntityRelationshipName": "m16StatusId",
+      "relationshipName": "m16Status",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16Ver",
+      "otherEntityRelationshipName": "mRezeptId",
+      "relationshipName": "mRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "mArtikel",
+      "otherEntityRelationshipName": "muster16",
+      "relationshipName": "mArtikel"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "lieferung",
+      "otherEntityRelationshipName": "muster16",
+      "relationshipName": "lieferungId"
+    }
+  ],
+  "entityTableName": "muster_16",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133105"
+}

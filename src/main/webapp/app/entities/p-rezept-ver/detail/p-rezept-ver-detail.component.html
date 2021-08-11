@@ -1,0 +1,98 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pRezeptVer">
+      <h2 data-cy="pRezeptVerDetailsHeading"><span>P Rezept Ver</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.id }}</span>
+        </dd>
+        <dt><span>P Rezept Id 9</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.pRezeptId9 }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.apoIk }}</span>
+        </dd>
+        <dt><span>Apo Ik Send</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.apoIkSend }}</span>
+        </dd>
+        <dt><span>Arb Platz</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.arbPlatz }}</span>
+        </dd>
+        <dt><span>Avs Id</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.avsId }}</span>
+        </dd>
+        <dt><span>Bediener</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.bediener }}</span>
+        </dd>
+        <dt><span>Bvg</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.bvg }}</span>
+        </dd>
+        <dt><span>E Status</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.eStatus }}</span>
+        </dd>
+        <dt><span>Erst Zeitpunkt</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.erstZeitpunkt }}</span>
+        </dd>
+        <dt><span>K Name</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.kName }}</span>
+        </dd>
+        <dt><span>Kk Ik</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.kkIk }}</span>
+        </dd>
+        <dt><span>La Nr</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.laNr }}</span>
+        </dd>
+        <dt><span>Vrs Nr</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.vrsNr }}</span>
+        </dd>
+        <dt><span>Vrtrgs Arzt Nr</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.vrtrgsArztNr }}</span>
+        </dd>
+        <dt><span>V Geb</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.vGeb }}</span>
+        </dd>
+        <dt><span>V Stat</span></dt>
+        <dd>
+          <span>{{ pRezeptVer.vStat }}</span>
+        </dd>
+        <dt><span>P Rezept Id</span></dt>
+        <dd>
+          <div *ngIf="pRezeptVer.pRezeptId">
+            <a [routerLink]="['/p-rezept-abg', pRezeptVer.pRezeptId?.id, 'view']">{{ pRezeptVer.pRezeptId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/p-rezept-ver', pRezeptVer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

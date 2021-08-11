@@ -1,0 +1,40 @@
+{
+  "name": "PRezeptAbr",
+  "fields": [
+    {
+      "fieldName": "pRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "betragRabA",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "betragRabH",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "betragApoAusz",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezeptAbg",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "p_rezept_abr",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133114"
+}

@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pRezept">
+      <h2 data-cy="pRezeptDetailsHeading"><span>P Rezept</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ pRezept.id }}</span>
+        </dd>
+        <dt><span>P Rezept Id</span></dt>
+        <dd>
+          <span>{{ pRezept.pRezeptId }}</span>
+        </dd>
+        <dt><span>Lieferdat</span></dt>
+        <dd>
+          <span>{{ pRezept.lieferdat }}</span>
+        </dd>
+        <dt><span>Lieferung Id</span></dt>
+        <dd>
+          <span>{{ pRezept.lieferungId }}</span>
+        </dd>
+        <dt><span>A Periode</span></dt>
+        <dd>
+          <span>{{ pRezept.aPeriode }}</span>
+        </dd>
+        <dt><span>Ab Datum</span></dt>
+        <dd>
+          <span>{{ pRezept.abDatum }}</span>
+        </dd>
+        <dt><span>P Status</span></dt>
+        <dd>
+          <div *ngIf="pRezept.pStatus">
+            <a [routerLink]="['/p-status', pRezept.pStatus?.id, 'view']">{{ pRezept.pStatus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>P Rezept Id</span></dt>
+        <dd>
+          <div *ngIf="pRezept.pRezeptId">
+            <a [routerLink]="['/p-rezept-ver', pRezept.pRezeptId?.id, 'view']">{{ pRezept.pRezeptId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Lieferung Id</span></dt>
+        <dd>
+          <div *ngIf="pRezept.lieferungId">
+            <a [routerLink]="['/lieferung', pRezept.lieferungId?.id, 'view']">{{ pRezept.lieferungId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/p-rezept', pRezept.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

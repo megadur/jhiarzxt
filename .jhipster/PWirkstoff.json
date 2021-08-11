@@ -1,0 +1,67 @@
+{
+  "name": "PWirkstoff",
+  "fields": [
+    {
+      "fieldName": "pWirkstoffId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pChargeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "faktor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "faktorKennzeichen",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notiz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pPosNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preisKennzeichen",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pzn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "wirkstoffName",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pCharge",
+      "otherEntityRelationshipName": "pWirkstoff",
+      "relationshipName": "pCharge"
+    }
+  ],
+  "entityTableName": "p_wirkstoff",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133116"
+}

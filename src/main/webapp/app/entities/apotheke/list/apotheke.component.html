@@ -1,0 +1,99 @@
+<div>
+  <h2 id="page-heading" data-cy="ApothekeHeading">
+    <span>Apothekes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-apotheke"
+        [routerLink]="['/apotheke/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Apotheke </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="apothekes?.length === 0">
+    <span>No apothekes found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="apothekes && apothekes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>I K</span></th>
+          <th scope="col"><span>Inhaber</span></th>
+          <th scope="col"><span>Country Code</span></th>
+          <th scope="col"><span>Plz</span></th>
+          <th scope="col"><span>Ort</span></th>
+          <th scope="col"><span>Str</span></th>
+          <th scope="col"><span>Haus Nr</span></th>
+          <th scope="col"><span>Addr Zusatz</span></th>
+          <th scope="col"><span>Rechenzentrum</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let apotheke of apothekes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/apotheke', apotheke.id, 'view']">{{ apotheke.id }}</a>
+          </td>
+          <td>{{ apotheke.iK }}</td>
+          <td>{{ apotheke.inhaber }}</td>
+          <td>{{ apotheke.countryCode }}</td>
+          <td>{{ apotheke.plz }}</td>
+          <td>{{ apotheke.ort }}</td>
+          <td>{{ apotheke.str }}</td>
+          <td>{{ apotheke.hausNr }}</td>
+          <td>{{ apotheke.addrZusatz }}</td>
+          <td>
+            <span *ngFor="let rechenzentrum of apotheke.rechenzentrums; let last = last">
+              <a class="form-control-static" [routerLink]="['/rechenzentrum', rechenzentrum.id, 'view']">{{ rechenzentrum.id }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/apotheke', apotheke.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/apotheke', apotheke.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(apotheke)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

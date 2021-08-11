@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="MArtikelHeading">
+    <span>M Artikels</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-m-artikel"
+        [routerLink]="['/m-artikel/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new M Artikel </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="mArtikels?.length === 0">
+    <span>No mArtikels found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="mArtikels && mArtikels.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>M Artikel Id</span></th>
+          <th scope="col"><span>M Rezept Id</span></th>
+          <th scope="col"><span>Apo Ik</span></th>
+          <th scope="col"><span>Autidem</span></th>
+          <th scope="col"><span>Faktor</span></th>
+          <th scope="col"><span>Hilfsmittel Nr</span></th>
+          <th scope="col"><span>Muster 16 Id</span></th>
+          <th scope="col"><span>Pos Nr</span></th>
+          <th scope="col"><span>Pzn</span></th>
+          <th scope="col"><span>Taxe</span></th>
+          <th scope="col"><span>V Zeile</span></th>
+          <th scope="col"><span>Muster 16</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let mArtikel of mArtikels; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/m-artikel', mArtikel.id, 'view']">{{ mArtikel.id }}</a>
+          </td>
+          <td>{{ mArtikel.mArtikelId }}</td>
+          <td>{{ mArtikel.mRezeptId }}</td>
+          <td>{{ mArtikel.apoIk }}</td>
+          <td>{{ mArtikel.autidem }}</td>
+          <td>{{ mArtikel.faktor }}</td>
+          <td>{{ mArtikel.hilfsmittelNr }}</td>
+          <td>{{ mArtikel.muster16Id }}</td>
+          <td>{{ mArtikel.posNr }}</td>
+          <td>{{ mArtikel.pzn }}</td>
+          <td>{{ mArtikel.taxe }}</td>
+          <td>{{ mArtikel.vZeile }}</td>
+          <td>
+            <div *ngIf="mArtikel.muster16">
+              <a [routerLink]="['/muster-16', mArtikel.muster16?.id, 'view']">{{ mArtikel.muster16?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/m-artikel', mArtikel.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/m-artikel', mArtikel.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(mArtikel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

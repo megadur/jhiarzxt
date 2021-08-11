@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-e-rezept-heading" data-cy="ERezeptCreateUpdateHeading">Create or edit a E Rezept</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_iD">I D</label>
+          <input type="text" class="form-control" name="iD" id="field_iD" data-cy="iD" formControlName="iD" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_dokVer">Dok Ver</label>
+          <input type="text" class="form-control" name="dokVer" id="field_dokVer" data-cy="dokVer" formControlName="dokVer" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abgInfo">Abg Info</label>
+          <input type="text" class="form-control" name="abgInfo" id="field_abgInfo" data-cy="abgInfo" formControlName="abgInfo" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abgDatum">Abg Datum</label>
+          <div class="input-group">
+            <input
+              id="field_abgDatum"
+              data-cy="abgDatum"
+              type="text"
+              class="form-control"
+              name="abgDatum"
+              ngbDatepicker
+              #abgDatumDp="ngbDatepicker"
+              formControlName="abgDatum"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="abgDatumDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abgGesZuzahl">Abg Ges Zuzahl</label>
+          <input
+            type="number"
+            class="form-control"
+            name="abgGesZuzahl"
+            id="field_abgGesZuzahl"
+            data-cy="abgGesZuzahl"
+            formControlName="abgGesZuzahl"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abgGesBrutto">Abg Ges Brutto</label>
+          <input
+            type="number"
+            class="form-control"
+            name="abgGesBrutto"
+            id="field_abgGesBrutto"
+            data-cy="abgGesBrutto"
+            formControlName="abgGesBrutto"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abgVertragskz">Abg Vertragskz</label>
+          <input
+            type="text"
+            class="form-control"
+            name="abgVertragskz"
+            id="field_abgVertragskz"
+            data-cy="abgVertragskz"
+            formControlName="abgVertragskz"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_eStatus">E Status</label>
+          <select class="form-control" id="field_eStatus" data-cy="eStatus" name="eStatus" formControlName="eStatus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="eStatusOption.id === editForm.get('eStatus')!.value?.id ? editForm.get('eStatus')!.value : eStatusOption"
+              *ngFor="let eStatusOption of eStatusesCollection; trackBy: trackEStatusById"
+            >
+              {{ eStatusOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferungId">Lieferung Id</label>
+          <select class="form-control" id="field_lieferungId" data-cy="lieferungId" name="lieferungId" formControlName="lieferungId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                lieferungOption.id === editForm.get('lieferungId')!.value?.id ? editForm.get('lieferungId')!.value : lieferungOption
+              "
+              *ngFor="let lieferungOption of lieferungsSharedCollection; trackBy: trackLieferungById"
+            >
+              {{ lieferungOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

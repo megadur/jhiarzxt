@@ -1,0 +1,121 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-m-artikel-heading" data-cy="MArtikelCreateUpdateHeading">Create or edit a M Artikel</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mArtikelId">M Artikel Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mArtikelId"
+            id="field_mArtikelId"
+            data-cy="mArtikelId"
+            formControlName="mArtikelId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mRezeptId">M Rezept Id</label>
+          <input type="text" class="form-control" name="mRezeptId" id="field_mRezeptId" data-cy="mRezeptId" formControlName="mRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_autidem">Autidem</label>
+          <input type="text" class="form-control" name="autidem" id="field_autidem" data-cy="autidem" formControlName="autidem" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_faktor">Faktor</label>
+          <input type="text" class="form-control" name="faktor" id="field_faktor" data-cy="faktor" formControlName="faktor" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_hilfsmittelNr">Hilfsmittel Nr</label>
+          <input
+            type="text"
+            class="form-control"
+            name="hilfsmittelNr"
+            id="field_hilfsmittelNr"
+            data-cy="hilfsmittelNr"
+            formControlName="hilfsmittelNr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_muster16Id">Muster 16 Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="muster16Id"
+            id="field_muster16Id"
+            data-cy="muster16Id"
+            formControlName="muster16Id"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_posNr">Pos Nr</label>
+          <input type="text" class="form-control" name="posNr" id="field_posNr" data-cy="posNr" formControlName="posNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pzn">Pzn</label>
+          <input type="text" class="form-control" name="pzn" id="field_pzn" data-cy="pzn" formControlName="pzn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_taxe">Taxe</label>
+          <input type="text" class="form-control" name="taxe" id="field_taxe" data-cy="taxe" formControlName="taxe" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vZeile">V Zeile</label>
+          <input type="text" class="form-control" name="vZeile" id="field_vZeile" data-cy="vZeile" formControlName="vZeile" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_muster16">Muster 16</label>
+          <select class="form-control" id="field_muster16" data-cy="muster16" name="muster16" formControlName="muster16">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="muster16Option.id === editForm.get('muster16')!.value?.id ? editForm.get('muster16')!.value : muster16Option"
+              *ngFor="let muster16Option of muster16sSharedCollection; trackBy: trackMuster16ById"
+            >
+              {{ muster16Option.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

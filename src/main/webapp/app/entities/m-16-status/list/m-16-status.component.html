@@ -1,0 +1,80 @@
+<div>
+  <h2 id="page-heading" data-cy="M16StatusHeading">
+    <span>M 16 Statuses</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-m-16-status"
+        [routerLink]="['/m-16-status/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new M 16 Status </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="m16Statuses?.length === 0">
+    <span>No m16Statuses found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="m16Statuses && m16Statuses.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>M 16 Status Id</span></th>
+          <th scope="col"><span>Status</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let m16Status of m16Statuses; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/m-16-status', m16Status.id, 'view']">{{ m16Status.id }}</a>
+          </td>
+          <td>{{ m16Status.m16StatusId }}</td>
+          <td>{{ m16Status.status }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/m-16-status', m16Status.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/m-16-status', m16Status.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(m16Status)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

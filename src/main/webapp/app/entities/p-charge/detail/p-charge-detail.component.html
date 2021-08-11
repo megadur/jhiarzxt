@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pCharge">
+      <h2 data-cy="pChargeDetailsHeading"><span>P Charge</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ pCharge.id }}</span>
+        </dd>
+        <dt><span>P Charge Id</span></dt>
+        <dd>
+          <span>{{ pCharge.pChargeId }}</span>
+        </dd>
+        <dt><span>P Rezept Id</span></dt>
+        <dd>
+          <span>{{ pCharge.pRezeptId }}</span>
+        </dd>
+        <dt><span>Anzahl Applikationen</span></dt>
+        <dd>
+          <span>{{ pCharge.anzahlApplikationen }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ pCharge.apoIk }}</span>
+        </dd>
+        <dt><span>Chargen Nr</span></dt>
+        <dd>
+          <span>{{ pCharge.chargenNr }}</span>
+        </dd>
+        <dt><span>Hersteller Nr</span></dt>
+        <dd>
+          <span>{{ pCharge.herstellerNr }}</span>
+        </dd>
+        <dt><span>Hersteller Schluessel</span></dt>
+        <dd>
+          <span>{{ pCharge.herstellerSchluessel }}</span>
+        </dd>
+        <dt><span>Herstellungs Datum</span></dt>
+        <dd>
+          <span>{{ pCharge.herstellungsDatum }}</span>
+        </dd>
+        <dt><span>P Rezept</span></dt>
+        <dd>
+          <div *ngIf="pCharge.pRezept">
+            <a [routerLink]="['/p-rezept', pCharge.pRezept?.id, 'view']">{{ pCharge.pRezept?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/p-charge', pCharge.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

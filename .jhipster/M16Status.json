@@ -1,0 +1,32 @@
+{
+  "name": "M16Status",
+  "fields": [
+    {
+      "fieldName": "m16StatusId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16",
+      "otherEntityRelationshipName": "m16Status",
+      "relationshipName": "m16StatusId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "m_16_status",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133110"
+}

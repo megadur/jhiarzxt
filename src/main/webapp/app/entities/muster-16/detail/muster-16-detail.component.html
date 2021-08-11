@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="muster16">
+      <h2 data-cy="muster16DetailsHeading"><span>Muster 16</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ muster16.id }}</span>
+        </dd>
+        <dt><span>M Rezept Id</span></dt>
+        <dd>
+          <span>{{ muster16.mRezeptId }}</span>
+        </dd>
+        <dt><span>Lieferung Id</span></dt>
+        <dd>
+          <span>{{ muster16.lieferungId }}</span>
+        </dd>
+        <dt><span>M 16 Status</span></dt>
+        <dd>
+          <span>{{ muster16.m16Status }}</span>
+        </dd>
+        <dt><span>M Muster 16 Id</span></dt>
+        <dd>
+          <span>{{ muster16.mMuster16Id }}</span>
+        </dd>
+        <dt><span>Apo Ik Send</span></dt>
+        <dd>
+          <span>{{ muster16.apoIkSend }}</span>
+        </dd>
+        <dt><span>Apo Ik Snd</span></dt>
+        <dd>
+          <span>{{ muster16.apoIkSnd }}</span>
+        </dd>
+        <dt><span>M 16 Status</span></dt>
+        <dd>
+          <div *ngIf="muster16.m16Status">
+            <a [routerLink]="['/m-16-status', muster16.m16Status?.id, 'view']">{{ muster16.m16Status?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>M Rezept Id</span></dt>
+        <dd>
+          <div *ngIf="muster16.mRezeptId">
+            <a [routerLink]="['/muster-16-ver', muster16.mRezeptId?.id, 'view']">{{ muster16.mRezeptId?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Lieferung Id</span></dt>
+        <dd>
+          <div *ngIf="muster16.lieferungId">
+            <a [routerLink]="['/lieferung', muster16.lieferungId?.id, 'view']">{{ muster16.lieferungId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/muster-16', muster16.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

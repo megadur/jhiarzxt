@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-rezept-heading" data-cy="PRezeptCreateUpdateHeading">Create or edit a P Rezept</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <input type="text" class="form-control" name="pRezeptId" id="field_pRezeptId" data-cy="pRezeptId" formControlName="pRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferdat">Lieferdat</label>
+          <input type="text" class="form-control" name="lieferdat" id="field_lieferdat" data-cy="lieferdat" formControlName="lieferdat" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferungId">Lieferung Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lieferungId"
+            id="field_lieferungId"
+            data-cy="lieferungId"
+            formControlName="lieferungId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aPeriode">A Periode</label>
+          <input type="text" class="form-control" name="aPeriode" id="field_aPeriode" data-cy="aPeriode" formControlName="aPeriode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_abDatum">Ab Datum</label>
+          <input type="text" class="form-control" name="abDatum" id="field_abDatum" data-cy="abDatum" formControlName="abDatum" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pStatus">P Status</label>
+          <select class="form-control" id="field_pStatus" data-cy="pStatus" name="pStatus" formControlName="pStatus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pStatusOption.id === editForm.get('pStatus')!.value?.id ? editForm.get('pStatus')!.value : pStatusOption"
+              *ngFor="let pStatusOption of pStatusesCollection; trackBy: trackPStatusById"
+            >
+              {{ pStatusOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <select class="form-control" id="field_pRezeptId" data-cy="pRezeptId" name="pRezeptId" formControlName="pRezeptId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pRezeptVerOption.id === editForm.get('pRezeptId')!.value?.id ? editForm.get('pRezeptId')!.value : pRezeptVerOption"
+              *ngFor="let pRezeptVerOption of pRezeptIdsCollection; trackBy: trackPRezeptVerById"
+            >
+              {{ pRezeptVerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferungId">Lieferung Id</label>
+          <select class="form-control" id="field_lieferungId" data-cy="lieferungId" name="lieferungId" formControlName="lieferungId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                lieferungOption.id === editForm.get('lieferungId')!.value?.id ? editForm.get('lieferungId')!.value : lieferungOption
+              "
+              *ngFor="let lieferungOption of lieferungsSharedCollection; trackBy: trackLieferungById"
+            >
+              {{ lieferungOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

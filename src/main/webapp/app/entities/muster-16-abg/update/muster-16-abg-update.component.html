@@ -1,0 +1,87 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-muster-16-abg-heading" data-cy="Muster16AbgCreateUpdateHeading">Create or edit a Muster 16 Abg</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferDat">Liefer Dat</label>
+          <input type="text" class="form-control" name="lieferDat" id="field_lieferDat" data-cy="lieferDat" formControlName="lieferDat" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_aPeriode">A Periode</label>
+          <input type="text" class="form-control" name="aPeriode" id="field_aPeriode" data-cy="aPeriode" formControlName="aPeriode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_arbPlatz">Arb Platz</label>
+          <input type="text" class="form-control" name="arbPlatz" id="field_arbPlatz" data-cy="arbPlatz" formControlName="arbPlatz" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_avsId">Avs Id</label>
+          <input type="text" class="form-control" name="avsId" id="field_avsId" data-cy="avsId" formControlName="avsId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_bediener">Bediener</label>
+          <input type="text" class="form-control" name="bediener" id="field_bediener" data-cy="bediener" formControlName="bediener" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_zuzahlung">Zuzahlung</label>
+          <input type="text" class="form-control" name="zuzahlung" id="field_zuzahlung" data-cy="zuzahlung" formControlName="zuzahlung" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_gesBrutto">Ges Brutto</label>
+          <input type="text" class="form-control" name="gesBrutto" id="field_gesBrutto" data-cy="gesBrutto" formControlName="gesBrutto" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mRezeptId">M Rezept Id</label>
+          <select class="form-control" id="field_mRezeptId" data-cy="mRezeptId" name="mRezeptId" formControlName="mRezeptId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                muster16AbrOption.id === editForm.get('mRezeptId')!.value?.id ? editForm.get('mRezeptId')!.value : muster16AbrOption
+              "
+              *ngFor="let muster16AbrOption of mRezeptIdsCollection; trackBy: trackMuster16AbrById"
+            >
+              {{ muster16AbrOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

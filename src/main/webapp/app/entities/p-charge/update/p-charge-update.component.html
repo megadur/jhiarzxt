@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-charge-heading" data-cy="PChargeCreateUpdateHeading">Create or edit a P Charge</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pChargeId">P Charge Id</label>
+          <input type="text" class="form-control" name="pChargeId" id="field_pChargeId" data-cy="pChargeId" formControlName="pChargeId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <input type="text" class="form-control" name="pRezeptId" id="field_pRezeptId" data-cy="pRezeptId" formControlName="pRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_anzahlApplikationen">Anzahl Applikationen</label>
+          <input
+            type="text"
+            class="form-control"
+            name="anzahlApplikationen"
+            id="field_anzahlApplikationen"
+            data-cy="anzahlApplikationen"
+            formControlName="anzahlApplikationen"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_chargenNr">Chargen Nr</label>
+          <input type="text" class="form-control" name="chargenNr" id="field_chargenNr" data-cy="chargenNr" formControlName="chargenNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_herstellerNr">Hersteller Nr</label>
+          <input
+            type="text"
+            class="form-control"
+            name="herstellerNr"
+            id="field_herstellerNr"
+            data-cy="herstellerNr"
+            formControlName="herstellerNr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_herstellerSchluessel">Hersteller Schluessel</label>
+          <input
+            type="text"
+            class="form-control"
+            name="herstellerSchluessel"
+            id="field_herstellerSchluessel"
+            data-cy="herstellerSchluessel"
+            formControlName="herstellerSchluessel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_herstellungsDatum">Herstellungs Datum</label>
+          <input
+            type="text"
+            class="form-control"
+            name="herstellungsDatum"
+            id="field_herstellungsDatum"
+            data-cy="herstellungsDatum"
+            formControlName="herstellungsDatum"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezept">P Rezept</label>
+          <select class="form-control" id="field_pRezept" data-cy="pRezept" name="pRezept" formControlName="pRezept">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pRezeptOption.id === editForm.get('pRezept')!.value?.id ? editForm.get('pRezept')!.value : pRezeptOption"
+              *ngFor="let pRezeptOption of pRezeptsSharedCollection; trackBy: trackPRezeptById"
+            >
+              {{ pRezeptOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+<div>
+  <h2 id="page-heading" data-cy="EAenderungHeading">
+    <span>E Aenderungs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-e-aenderung"
+        [routerLink]="['/e-aenderung/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new E Aenderung </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="eAenderungs?.length === 0">
+    <span>No eAenderungs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="eAenderungs && eAenderungs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Schluessel</span></th>
+          <th scope="col"><span>Doku Rezept</span></th>
+          <th scope="col"><span>Doku Arzt</span></th>
+          <th scope="col"><span>Datum</span></th>
+          <th scope="col"><span>E Rezept</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eAenderung of eAenderungs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/e-aenderung', eAenderung.id, 'view']">{{ eAenderung.id }}</a>
+          </td>
+          <td>{{ eAenderung.schluessel }}</td>
+          <td>{{ eAenderung.dokuRezept }}</td>
+          <td>{{ eAenderung.dokuArzt }}</td>
+          <td>{{ eAenderung.datum | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="eAenderung.eRezept">
+              <a [routerLink]="['/e-rezept', eAenderung.eRezept?.id, 'view']">{{ eAenderung.eRezept?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/e-aenderung', eAenderung.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/e-aenderung', eAenderung.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(eAenderung)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="PWirkstoffHeading">
+    <span>P Wirkstoffs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-wirkstoff"
+        [routerLink]="['/p-wirkstoff/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Wirkstoff </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pWirkstoffs?.length === 0">
+    <span>No pWirkstoffs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pWirkstoffs && pWirkstoffs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Wirkstoff Id</span></th>
+          <th scope="col"><span>P Charge Id</span></th>
+          <th scope="col"><span>Apo Ik</span></th>
+          <th scope="col"><span>Faktor</span></th>
+          <th scope="col"><span>Faktor Kennzeichen</span></th>
+          <th scope="col"><span>Notiz</span></th>
+          <th scope="col"><span>P Pos Nr</span></th>
+          <th scope="col"><span>Preis Kennzeichen</span></th>
+          <th scope="col"><span>Pzn</span></th>
+          <th scope="col"><span>Taxe</span></th>
+          <th scope="col"><span>Wirkstoff Name</span></th>
+          <th scope="col"><span>P Charge</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pWirkstoff of pWirkstoffs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-wirkstoff', pWirkstoff.id, 'view']">{{ pWirkstoff.id }}</a>
+          </td>
+          <td>{{ pWirkstoff.pWirkstoffId }}</td>
+          <td>{{ pWirkstoff.pChargeId }}</td>
+          <td>{{ pWirkstoff.apoIk }}</td>
+          <td>{{ pWirkstoff.faktor }}</td>
+          <td>{{ pWirkstoff.faktorKennzeichen }}</td>
+          <td>{{ pWirkstoff.notiz }}</td>
+          <td>{{ pWirkstoff.pPosNr }}</td>
+          <td>{{ pWirkstoff.preisKennzeichen }}</td>
+          <td>{{ pWirkstoff.pzn }}</td>
+          <td>{{ pWirkstoff.taxe }}</td>
+          <td>{{ pWirkstoff.wirkstoffName }}</td>
+          <td>
+            <div *ngIf="pWirkstoff.pCharge">
+              <a [routerLink]="['/p-charge', pWirkstoff.pCharge?.id, 'view']">{{ pWirkstoff.pCharge?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-wirkstoff', pWirkstoff.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-wirkstoff', pWirkstoff.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pWirkstoff)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

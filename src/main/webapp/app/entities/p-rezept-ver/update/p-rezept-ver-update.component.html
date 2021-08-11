@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-rezept-ver-heading" data-cy="PRezeptVerCreateUpdateHeading">Create or edit a P Rezept Ver</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId9">P Rezept Id 9</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pRezeptId9"
+            id="field_pRezeptId9"
+            data-cy="pRezeptId9"
+            formControlName="pRezeptId9"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIkSend">Apo Ik Send</label>
+          <input type="text" class="form-control" name="apoIkSend" id="field_apoIkSend" data-cy="apoIkSend" formControlName="apoIkSend" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_arbPlatz">Arb Platz</label>
+          <input type="text" class="form-control" name="arbPlatz" id="field_arbPlatz" data-cy="arbPlatz" formControlName="arbPlatz" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_avsId">Avs Id</label>
+          <input type="text" class="form-control" name="avsId" id="field_avsId" data-cy="avsId" formControlName="avsId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_bediener">Bediener</label>
+          <input type="text" class="form-control" name="bediener" id="field_bediener" data-cy="bediener" formControlName="bediener" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_bvg">Bvg</label>
+          <input type="text" class="form-control" name="bvg" id="field_bvg" data-cy="bvg" formControlName="bvg" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_eStatus">E Status</label>
+          <input type="text" class="form-control" name="eStatus" id="field_eStatus" data-cy="eStatus" formControlName="eStatus" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_erstZeitpunkt">Erst Zeitpunkt</label>
+          <input
+            type="text"
+            class="form-control"
+            name="erstZeitpunkt"
+            id="field_erstZeitpunkt"
+            data-cy="erstZeitpunkt"
+            formControlName="erstZeitpunkt"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_kName">K Name</label>
+          <input type="text" class="form-control" name="kName" id="field_kName" data-cy="kName" formControlName="kName" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_kkIk">Kk Ik</label>
+          <input type="text" class="form-control" name="kkIk" id="field_kkIk" data-cy="kkIk" formControlName="kkIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_laNr">La Nr</label>
+          <input type="text" class="form-control" name="laNr" id="field_laNr" data-cy="laNr" formControlName="laNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vrsNr">Vrs Nr</label>
+          <input type="text" class="form-control" name="vrsNr" id="field_vrsNr" data-cy="vrsNr" formControlName="vrsNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vrtrgsArztNr">Vrtrgs Arzt Nr</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vrtrgsArztNr"
+            id="field_vrtrgsArztNr"
+            data-cy="vrtrgsArztNr"
+            formControlName="vrtrgsArztNr"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vGeb">V Geb</label>
+          <input type="text" class="form-control" name="vGeb" id="field_vGeb" data-cy="vGeb" formControlName="vGeb" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vStat">V Stat</label>
+          <input type="text" class="form-control" name="vStat" id="field_vStat" data-cy="vStat" formControlName="vStat" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <select class="form-control" id="field_pRezeptId" data-cy="pRezeptId" name="pRezeptId" formControlName="pRezeptId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pRezeptAbgOption.id === editForm.get('pRezeptId')!.value?.id ? editForm.get('pRezeptId')!.value : pRezeptAbgOption"
+              *ngFor="let pRezeptAbgOption of pRezeptIdsCollection; trackBy: trackPRezeptAbgById"
+            >
+              {{ pRezeptAbgOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="PRezeptVerHeading">
+    <span>P Rezept Vers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-rezept-ver"
+        [routerLink]="['/p-rezept-ver/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Rezept Ver </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pRezeptVers?.length === 0">
+    <span>No pRezeptVers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pRezeptVers && pRezeptVers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Rezept Id 9</span></th>
+          <th scope="col"><span>Apo Ik</span></th>
+          <th scope="col"><span>Apo Ik Send</span></th>
+          <th scope="col"><span>Arb Platz</span></th>
+          <th scope="col"><span>Avs Id</span></th>
+          <th scope="col"><span>Bediener</span></th>
+          <th scope="col"><span>Bvg</span></th>
+          <th scope="col"><span>E Status</span></th>
+          <th scope="col"><span>Erst Zeitpunkt</span></th>
+          <th scope="col"><span>K Name</span></th>
+          <th scope="col"><span>Kk Ik</span></th>
+          <th scope="col"><span>La Nr</span></th>
+          <th scope="col"><span>Vrs Nr</span></th>
+          <th scope="col"><span>Vrtrgs Arzt Nr</span></th>
+          <th scope="col"><span>V Geb</span></th>
+          <th scope="col"><span>V Stat</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pRezeptVer of pRezeptVers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-rezept-ver', pRezeptVer.id, 'view']">{{ pRezeptVer.id }}</a>
+          </td>
+          <td>{{ pRezeptVer.pRezeptId9 }}</td>
+          <td>{{ pRezeptVer.apoIk }}</td>
+          <td>{{ pRezeptVer.apoIkSend }}</td>
+          <td>{{ pRezeptVer.arbPlatz }}</td>
+          <td>{{ pRezeptVer.avsId }}</td>
+          <td>{{ pRezeptVer.bediener }}</td>
+          <td>{{ pRezeptVer.bvg }}</td>
+          <td>{{ pRezeptVer.eStatus }}</td>
+          <td>{{ pRezeptVer.erstZeitpunkt }}</td>
+          <td>{{ pRezeptVer.kName }}</td>
+          <td>{{ pRezeptVer.kkIk }}</td>
+          <td>{{ pRezeptVer.laNr }}</td>
+          <td>{{ pRezeptVer.vrsNr }}</td>
+          <td>{{ pRezeptVer.vrtrgsArztNr }}</td>
+          <td>{{ pRezeptVer.vGeb }}</td>
+          <td>{{ pRezeptVer.vStat }}</td>
+          <td>
+            <div *ngIf="pRezeptVer.pRezeptId">
+              <a [routerLink]="['/p-rezept-abg', pRezeptVer.pRezeptId?.id, 'view']">{{ pRezeptVer.pRezeptId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-ver', pRezeptVer.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-ver', pRezeptVer.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pRezeptVer)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

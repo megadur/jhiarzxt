@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="muster16Abg">
+      <h2 data-cy="muster16AbgDetailsHeading"><span>Muster 16 Abg</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ muster16Abg.id }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ muster16Abg.apoIk }}</span>
+        </dd>
+        <dt><span>Liefer Dat</span></dt>
+        <dd>
+          <span>{{ muster16Abg.lieferDat }}</span>
+        </dd>
+        <dt><span>A Periode</span></dt>
+        <dd>
+          <span>{{ muster16Abg.aPeriode }}</span>
+        </dd>
+        <dt><span>Arb Platz</span></dt>
+        <dd>
+          <span>{{ muster16Abg.arbPlatz }}</span>
+        </dd>
+        <dt><span>Avs Id</span></dt>
+        <dd>
+          <span>{{ muster16Abg.avsId }}</span>
+        </dd>
+        <dt><span>Bediener</span></dt>
+        <dd>
+          <span>{{ muster16Abg.bediener }}</span>
+        </dd>
+        <dt><span>Zuzahlung</span></dt>
+        <dd>
+          <span>{{ muster16Abg.zuzahlung }}</span>
+        </dd>
+        <dt><span>Ges Brutto</span></dt>
+        <dd>
+          <span>{{ muster16Abg.gesBrutto }}</span>
+        </dd>
+        <dt><span>M Rezept Id</span></dt>
+        <dd>
+          <div *ngIf="muster16Abg.mRezeptId">
+            <a [routerLink]="['/muster-16-abr', muster16Abg.mRezeptId?.id, 'view']">{{ muster16Abg.mRezeptId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/muster-16-abg', muster16Abg.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

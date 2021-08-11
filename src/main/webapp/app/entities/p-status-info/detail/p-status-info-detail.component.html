@@ -1,0 +1,106 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pStatusInfo">
+      <h2 data-cy="pStatusInfoDetailsHeading"><span>P Status Info</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.id }}</span>
+        </dd>
+        <dt><span>P Status Info Id</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.pStatusInfoId }}</span>
+        </dd>
+        <dt><span>P Rezept Id</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.pRezeptId }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.apoIk }}</span>
+        </dd>
+        <dt><span>F Code</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fCode }}</span>
+        </dd>
+        <dt><span>F Haupt Fehler</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fHauptFehler }}</span>
+        </dd>
+        <dt><span>F Kommentar</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fKommentar }}</span>
+        </dd>
+        <dt><span>F Kurz Text</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fKurzText }}</span>
+        </dd>
+        <dt><span>F Lang Text</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fLangText }}</span>
+        </dd>
+        <dt><span>F Status</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fStatus }}</span>
+        </dd>
+        <dt><span>F T Code</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fTCode }}</span>
+        </dd>
+        <dt><span>F Wert</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fWert }}</span>
+        </dd>
+        <dt><span>Faktor</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.faktor }}</span>
+        </dd>
+        <dt><span>Frist Ende</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.fristEnde }}</span>
+        </dd>
+        <dt><span>Ges Brutto</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.gesBrutto }}</span>
+        </dd>
+        <dt><span>Pos Nr</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.posNr }}</span>
+        </dd>
+        <dt><span>Taxe</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.taxe }}</span>
+        </dd>
+        <dt><span>Zeitpunkt</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.zeitpunkt }}</span>
+        </dd>
+        <dt><span>Zuzahlung</span></dt>
+        <dd>
+          <span>{{ pStatusInfo.zuzahlung }}</span>
+        </dd>
+        <dt><span>P Status Info Id</span></dt>
+        <dd>
+          <div *ngIf="pStatusInfo.pStatusInfoId">
+            <a [routerLink]="['/p-rezept', pStatusInfo.pStatusInfoId?.id, 'view']">{{ pStatusInfo.pStatusInfoId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/p-status-info', pStatusInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

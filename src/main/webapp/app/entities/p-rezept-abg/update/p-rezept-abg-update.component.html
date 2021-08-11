@@ -1,0 +1,131 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-rezept-abg-heading" data-cy="PRezeptAbgCreateUpdateHeading">Create or edit a P Rezept Abg</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <input type="text" class="form-control" name="pRezeptId" id="field_pRezeptId" data-cy="pRezeptId" formControlName="pRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_gebFrei">Geb Frei</label>
+          <input type="text" class="form-control" name="gebFrei" id="field_gebFrei" data-cy="gebFrei" formControlName="gebFrei" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_gesBrutto">Ges Brutto</label>
+          <input type="text" class="form-control" name="gesBrutto" id="field_gesBrutto" data-cy="gesBrutto" formControlName="gesBrutto" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_hashCode">Hash Code</label>
+          <input type="text" class="form-control" name="hashCode" id="field_hashCode" data-cy="hashCode" formControlName="hashCode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_kArt">K Art</label>
+          <input type="text" class="form-control" name="kArt" id="field_kArt" data-cy="kArt" formControlName="kArt" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_noctu">Noctu</label>
+          <input type="text" class="form-control" name="noctu" id="field_noctu" data-cy="noctu" formControlName="noctu" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptTyp">P Rezept Typ</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pRezeptTyp"
+            id="field_pRezeptTyp"
+            data-cy="pRezeptTyp"
+            formControlName="pRezeptTyp"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_rTyp">R Typ</label>
+          <input type="text" class="form-control" name="rTyp" id="field_rTyp" data-cy="rTyp" formControlName="rTyp" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_sonstige">Sonstige</label>
+          <input type="text" class="form-control" name="sonstige" id="field_sonstige" data-cy="sonstige" formControlName="sonstige" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_sprStBedarf">Spr St Bedarf</label>
+          <input
+            type="text"
+            class="form-control"
+            name="sprStBedarf"
+            id="field_sprStBedarf"
+            data-cy="sprStBedarf"
+            formControlName="sprStBedarf"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_verDat">Ver Dat</label>
+          <input type="text" class="form-control" name="verDat" id="field_verDat" data-cy="verDat" formControlName="verDat" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_vkGueltigBis">Vk Gueltig Bis</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vkGueltigBis"
+            id="field_vkGueltigBis"
+            data-cy="vkGueltigBis"
+            formControlName="vkGueltigBis"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_zuzahlung">Zuzahlung</label>
+          <input type="text" class="form-control" name="zuzahlung" id="field_zuzahlung" data-cy="zuzahlung" formControlName="zuzahlung" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <select class="form-control" id="field_pRezeptId" data-cy="pRezeptId" name="pRezeptId" formControlName="pRezeptId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pRezeptAbrOption.id === editForm.get('pRezeptId')!.value?.id ? editForm.get('pRezeptId')!.value : pRezeptAbrOption"
+              *ngFor="let pRezeptAbrOption of pRezeptIdsCollection; trackBy: trackPRezeptAbrById"
+            >
+              {{ pRezeptAbrOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
