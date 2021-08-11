@@ -1,0 +1,272 @@
+
+entity Muster16  {
+  mRezeptId String
+  lieferungId String
+  m16Status String
+  mMuster16Id String
+  apoIkSend String
+  apoIkSnd String
+  }
+entity Muster16Ver {
+  aUnfall String
+  abDatum String
+  vrsNr String
+  vrtrgsArztNr String
+  sprStBedarf String
+  unfall String
+  unfallTag String
+  vGeb String
+  vStat String
+  verDat String
+  kName String
+  kkIk String
+  laNr String
+  noctu String
+  hilf String
+  impf String
+  kArt String
+  rTyp String
+  rezeptTyp String
+  bgrPfl String
+  bvg String
+  eigBet String
+  gebFrei String
+  sonstige String
+  vkGueltigBis String
+  }
+entity Muster16Abg {
+  apoIk String
+  lieferDat String
+  aPeriode String
+  arbPlatz String
+  avsId String
+  bediener String
+  zuzahlung String
+  gesBrutto String
+  }
+entity Muster16Abr {
+	BetragRabA String,
+	BetragRabH String,
+	BetragApoAusz String,
+  }
+
+  
+entity MArtikel {
+  mArtikelId String
+  mRezeptId String
+  apoIk String
+  autidem String
+  faktor String
+  hilfsmittelNr String
+  muster16Id String
+  posNr String
+  pzn String
+  taxe String
+  vZeile String
+}
+
+entity M16Status{
+  m16StatusId String
+  status String
+ }
+
+entity  PRezept {
+  pRezeptId String
+  lieferdat String
+  lieferungId String
+  aPeriode String
+  abDatum String
+ }
+  
+entity  PRezeptVer {
+  pRezeptId9 String
+  apoIk String
+  apoIkSend String
+  arbPlatz String
+  avsId String
+  bediener String
+  bvg String
+  eStatus String
+  erstZeitpunkt String
+  kName String
+  kkIk String
+  laNr String
+  vrsNr String
+  vrtrgsArztNr String
+  vGeb String
+  vStat String
+  }
+entity  PRezeptAbg {
+  pRezeptId String
+  gebFrei String
+  gesBrutto String
+  hashCode String
+  kArt String
+  noctu String
+  pRezeptTyp String
+  rTyp String
+  sonstige String
+  sprStBedarf String
+  verDat String
+  vkGueltigBis String
+  zuzahlung String
+}
+entity  PRezeptAbr {
+  pRezeptId String
+	BetragRabA String,
+	BetragRabH String,
+	BetragApoAusz String,
+}
+
+entity PCharge{
+  pChargeId String
+  pRezeptId String
+  anzahlApplikationen String
+  apoIk String
+  chargenNr String
+  herstellerNr String
+  herstellerSchluessel String
+  herstellungsDatum String
+}
+
+entity PWirkstoff{  
+  pWirkstoffId String
+  pChargeId String
+  apoIk String
+  faktor String
+  faktorKennzeichen String
+  notiz String
+  pPosNr String
+  preisKennzeichen String
+  pzn String
+  taxe String
+  wirkstoffName String
+}
+  
+entity PStatusInfo {
+  pStatusInfoId String
+  pRezeptId String
+  apoIk String
+  fCode String
+  fHauptFehler String
+  fKommentar String
+  fKurzText String
+  fLangText String
+  fStatus String
+  fTCode String
+  fWert String
+  faktor String
+  fristEnde String
+  gesBrutto String
+  posNr String
+  taxe String
+  zeitpunkt String
+  zuzahlung String
+}
+
+entity PStatus{
+  Wert String
+  Beschreibung String
+}
+
+
+// Abgabeinformationen
+entity Apotheke {
+  IK  Integer
+  Inhaber  String
+  // Wohnsitzländercode der Apotheke
+  CountryCode  String
+  //Postleitzahl der Apotheke
+  Plz  String
+  //Ortsname der Apotheke
+  Ort  String
+  //Straßenname der Apotheke
+  Str  String
+  // Hausnummer der Apotheke
+  HausNr  String
+  // Anschriftenzusatz der Apotheke
+  AddrZusatz   String
+}
+
+
+enum EKostenKat {
+  ZUZAHLUNG, MEHRKOSTEN, EIGENBET
+}
+
+
+entity EAenderung{
+  //Schlüssel
+  Schluessel Integer
+  //Dokumentation Rezeptänderung
+  DokuRezept  String
+  //Dokumentation Rücksprache mit dem Arzt
+  DokuArzt  String
+  //Datum Rezeptänderung
+  Datum  LocalDate
+
+}
+entity ERezept {
+  ID String
+  // Dokumentenversion
+    DokVer String
+  AbgInfo String
+  AbgDatum  LocalDate
+  AbgGesZuzahl Float
+  AbgGesBrutto Float
+  AbgVertragskz String
+}
+
+enum ERueckspracheArzt {
+    ERFOLGT, NICHTMOEGLICH, NICHTERFORDERLICH
+}
+
+entity EStatus{
+  Wert String
+  Beschreibung String
+}
+entity Lieferung {
+  ID String
+  Datum LocalDate
+  ApoIk String
+}
+entity Rechenzentrum {
+  ID String
+  Name String
+}
+
+relationship OneToOne {
+  Muster16{m16Status} to M16Status{m16StatusId}
+  Muster16{mRezeptId} to Muster16Ver{mRezeptId}
+  Muster16Ver{mRezeptId} to Muster16Abg{mRezeptId}
+  Muster16Abg{mRezeptId} to Muster16Abr{mRezeptId}
+  PRezept{PStatus} to PStatus{pStatusId} 
+  PRezept{pRezeptId} to PRezeptVer{pRezeptId} 
+  PRezeptVer{pRezeptId} to PRezeptAbg{pRezeptId} 
+  PRezeptAbg{pRezeptId} to PRezeptAbr{pRezeptId} 
+  ERezept{eStatus} to EStatus{eStatusId} 
+
+}
+
+relationship OneToMany {
+  Apotheke to Lieferung
+  Muster16 to MArtikel
+  PRezept to PCharge
+  PRezept{pStatusInfo} to PStatusInfo{pStatusInfoId}
+  PCharge to PWirkstoff
+  ERezept to EAbrzeile
+  ERezept to EHersteller
+  EHersteller to EEinheit
+  ERezept to EAenderung
+  EEinheit to EAbrPosition
+  EAbrzeile to EZusatz
+  EAbrzeile to EVersKosten
+}  
+relationship ManyToOne {
+  ERezept{lieferungId} to Lieferung
+  Muster16{lieferungId} to Lieferung
+  PRezept{lieferungId} to Lieferung
+}
+
+relationship ManyToMany {
+  Apotheke to Rechenzentrum    
+}
