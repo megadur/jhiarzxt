@@ -48,6 +48,34 @@ public class CacheConfiguration {
             createCache(cm, com.mycompany.myapp.domain.User.class.getName());
             createCache(cm, com.mycompany.myapp.domain.Authority.class.getName());
             createCache(cm, com.mycompany.myapp.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.mycompany.myapp.domain.Muster16.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Muster16.class.getName() + ".mArtikels");
+            createCache(cm, com.mycompany.myapp.domain.Muster16Ver.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Muster16Abg.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Muster16Abr.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.MArtikel.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.M16Status.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PRezept.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PRezept.class.getName() + ".pCharges");
+            createCache(cm, com.mycompany.myapp.domain.PRezept.class.getName() + ".pStatusInfos");
+            createCache(cm, com.mycompany.myapp.domain.PRezeptVer.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PRezeptAbg.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PRezeptAbr.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PCharge.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PCharge.class.getName() + ".pWirkstoffs");
+            createCache(cm, com.mycompany.myapp.domain.PWirkstoff.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PStatusInfo.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.PStatus.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Apotheke.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Apotheke.class.getName() + ".lieferungs");
+            createCache(cm, com.mycompany.myapp.domain.Apotheke.class.getName() + ".rechenzentrums");
+            createCache(cm, com.mycompany.myapp.domain.EAenderung.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ERezept.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.ERezept.class.getName() + ".eAenderungs");
+            createCache(cm, com.mycompany.myapp.domain.EStatus.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Lieferung.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Rechenzentrum.class.getName());
+            createCache(cm, com.mycompany.myapp.domain.Rechenzentrum.class.getName() + ".apothekes");
             // jhipster-needle-ehcache-add-entry
         };
     }

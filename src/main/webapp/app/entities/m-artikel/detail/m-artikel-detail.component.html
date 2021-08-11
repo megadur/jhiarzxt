@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="mArtikel">
+      <h2 data-cy="mArtikelDetailsHeading"><span>M Artikel</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ mArtikel.id }}</span>
+        </dd>
+        <dt><span>M Artikel Id</span></dt>
+        <dd>
+          <span>{{ mArtikel.mArtikelId }}</span>
+        </dd>
+        <dt><span>M Rezept Id</span></dt>
+        <dd>
+          <span>{{ mArtikel.mRezeptId }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ mArtikel.apoIk }}</span>
+        </dd>
+        <dt><span>Autidem</span></dt>
+        <dd>
+          <span>{{ mArtikel.autidem }}</span>
+        </dd>
+        <dt><span>Faktor</span></dt>
+        <dd>
+          <span>{{ mArtikel.faktor }}</span>
+        </dd>
+        <dt><span>Hilfsmittel Nr</span></dt>
+        <dd>
+          <span>{{ mArtikel.hilfsmittelNr }}</span>
+        </dd>
+        <dt><span>Muster 16 Id</span></dt>
+        <dd>
+          <span>{{ mArtikel.muster16Id }}</span>
+        </dd>
+        <dt><span>Pos Nr</span></dt>
+        <dd>
+          <span>{{ mArtikel.posNr }}</span>
+        </dd>
+        <dt><span>Pzn</span></dt>
+        <dd>
+          <span>{{ mArtikel.pzn }}</span>
+        </dd>
+        <dt><span>Taxe</span></dt>
+        <dd>
+          <span>{{ mArtikel.taxe }}</span>
+        </dd>
+        <dt><span>V Zeile</span></dt>
+        <dd>
+          <span>{{ mArtikel.vZeile }}</span>
+        </dd>
+        <dt><span>Muster 16</span></dt>
+        <dd>
+          <div *ngIf="mArtikel.muster16">
+            <a [routerLink]="['/muster-16', mArtikel.muster16?.id, 'view']">{{ mArtikel.muster16?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/m-artikel', mArtikel.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="muster16Ver">
+      <h2 data-cy="muster16VerDetailsHeading"><span>Muster 16 Ver</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ muster16Ver.id }}</span>
+        </dd>
+        <dt><span>A Unfall</span></dt>
+        <dd>
+          <span>{{ muster16Ver.aUnfall }}</span>
+        </dd>
+        <dt><span>Ab Datum</span></dt>
+        <dd>
+          <span>{{ muster16Ver.abDatum }}</span>
+        </dd>
+        <dt><span>Vrs Nr</span></dt>
+        <dd>
+          <span>{{ muster16Ver.vrsNr }}</span>
+        </dd>
+        <dt><span>Vrtrgs Arzt Nr</span></dt>
+        <dd>
+          <span>{{ muster16Ver.vrtrgsArztNr }}</span>
+        </dd>
+        <dt><span>Spr St Bedarf</span></dt>
+        <dd>
+          <span>{{ muster16Ver.sprStBedarf }}</span>
+        </dd>
+        <dt><span>Unfall</span></dt>
+        <dd>
+          <span>{{ muster16Ver.unfall }}</span>
+        </dd>
+        <dt><span>Unfall Tag</span></dt>
+        <dd>
+          <span>{{ muster16Ver.unfallTag }}</span>
+        </dd>
+        <dt><span>V Geb</span></dt>
+        <dd>
+          <span>{{ muster16Ver.vGeb }}</span>
+        </dd>
+        <dt><span>V Stat</span></dt>
+        <dd>
+          <span>{{ muster16Ver.vStat }}</span>
+        </dd>
+        <dt><span>Ver Dat</span></dt>
+        <dd>
+          <span>{{ muster16Ver.verDat }}</span>
+        </dd>
+        <dt><span>K Name</span></dt>
+        <dd>
+          <span>{{ muster16Ver.kName }}</span>
+        </dd>
+        <dt><span>Kk Ik</span></dt>
+        <dd>
+          <span>{{ muster16Ver.kkIk }}</span>
+        </dd>
+        <dt><span>La Nr</span></dt>
+        <dd>
+          <span>{{ muster16Ver.laNr }}</span>
+        </dd>
+        <dt><span>Noctu</span></dt>
+        <dd>
+          <span>{{ muster16Ver.noctu }}</span>
+        </dd>
+        <dt><span>Hilf</span></dt>
+        <dd>
+          <span>{{ muster16Ver.hilf }}</span>
+        </dd>
+        <dt><span>Impf</span></dt>
+        <dd>
+          <span>{{ muster16Ver.impf }}</span>
+        </dd>
+        <dt><span>K Art</span></dt>
+        <dd>
+          <span>{{ muster16Ver.kArt }}</span>
+        </dd>
+        <dt><span>R Typ</span></dt>
+        <dd>
+          <span>{{ muster16Ver.rTyp }}</span>
+        </dd>
+        <dt><span>Rezept Typ</span></dt>
+        <dd>
+          <span>{{ muster16Ver.rezeptTyp }}</span>
+        </dd>
+        <dt><span>Bgr Pfl</span></dt>
+        <dd>
+          <span>{{ muster16Ver.bgrPfl }}</span>
+        </dd>
+        <dt><span>Bvg</span></dt>
+        <dd>
+          <span>{{ muster16Ver.bvg }}</span>
+        </dd>
+        <dt><span>Eig Bet</span></dt>
+        <dd>
+          <span>{{ muster16Ver.eigBet }}</span>
+        </dd>
+        <dt><span>Geb Frei</span></dt>
+        <dd>
+          <span>{{ muster16Ver.gebFrei }}</span>
+        </dd>
+        <dt><span>Sonstige</span></dt>
+        <dd>
+          <span>{{ muster16Ver.sonstige }}</span>
+        </dd>
+        <dt><span>Vk Gueltig Bis</span></dt>
+        <dd>
+          <span>{{ muster16Ver.vkGueltigBis }}</span>
+        </dd>
+        <dt><span>M Rezept Id</span></dt>
+        <dd>
+          <div *ngIf="muster16Ver.mRezeptId">
+            <a [routerLink]="['/muster-16-abg', muster16Ver.mRezeptId?.id, 'view']">{{ muster16Ver.mRezeptId?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/muster-16-ver', muster16Ver.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

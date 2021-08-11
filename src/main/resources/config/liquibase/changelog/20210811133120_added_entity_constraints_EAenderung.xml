@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity EAenderung.
+    -->
+    <changeSet id="20210811133120-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="e_rezept_id"
+                                 baseTableName="e_aenderung"
+                                 constraintName="fk_e_aenderung__e_rezept_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="e_rezept"/>
+    </changeSet>
+</databaseChangeLog>

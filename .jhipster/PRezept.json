@@ -1,0 +1,69 @@
+{
+  "name": "PRezept",
+  "fields": [
+    {
+      "fieldName": "pRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieferdat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieferungId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aPeriode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "abDatum",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pStatus",
+      "otherEntityRelationshipName": "pStatusId",
+      "relationshipName": "pStatus",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezeptVer",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pCharge",
+      "otherEntityRelationshipName": "pRezept",
+      "relationshipName": "pCharge"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pStatusInfo",
+      "otherEntityRelationshipName": "pStatusInfoId",
+      "relationshipName": "pStatusInfo"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "lieferung",
+      "otherEntityRelationshipName": "pRezept",
+      "relationshipName": "lieferungId"
+    }
+  ],
+  "entityTableName": "p_rezept",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133111"
+}

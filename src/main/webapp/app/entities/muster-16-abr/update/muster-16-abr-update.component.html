@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-muster-16-abr-heading" data-cy="Muster16AbrCreateUpdateHeading">Create or edit a Muster 16 Abr</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_betragRabA">Betrag Rab A</label>
+          <input
+            type="text"
+            class="form-control"
+            name="betragRabA"
+            id="field_betragRabA"
+            data-cy="betragRabA"
+            formControlName="betragRabA"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_betragRabH">Betrag Rab H</label>
+          <input
+            type="text"
+            class="form-control"
+            name="betragRabH"
+            id="field_betragRabH"
+            data-cy="betragRabH"
+            formControlName="betragRabH"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_betragApoAusz">Betrag Apo Ausz</label>
+          <input
+            type="text"
+            class="form-control"
+            name="betragApoAusz"
+            id="field_betragApoAusz"
+            data-cy="betragApoAusz"
+            formControlName="betragApoAusz"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-wirkstoff-heading" data-cy="PWirkstoffCreateUpdateHeading">Create or edit a P Wirkstoff</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pWirkstoffId">P Wirkstoff Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pWirkstoffId"
+            id="field_pWirkstoffId"
+            data-cy="pWirkstoffId"
+            formControlName="pWirkstoffId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pChargeId">P Charge Id</label>
+          <input type="text" class="form-control" name="pChargeId" id="field_pChargeId" data-cy="pChargeId" formControlName="pChargeId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_faktor">Faktor</label>
+          <input type="text" class="form-control" name="faktor" id="field_faktor" data-cy="faktor" formControlName="faktor" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_faktorKennzeichen">Faktor Kennzeichen</label>
+          <input
+            type="text"
+            class="form-control"
+            name="faktorKennzeichen"
+            id="field_faktorKennzeichen"
+            data-cy="faktorKennzeichen"
+            formControlName="faktorKennzeichen"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_notiz">Notiz</label>
+          <input type="text" class="form-control" name="notiz" id="field_notiz" data-cy="notiz" formControlName="notiz" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pPosNr">P Pos Nr</label>
+          <input type="text" class="form-control" name="pPosNr" id="field_pPosNr" data-cy="pPosNr" formControlName="pPosNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_preisKennzeichen">Preis Kennzeichen</label>
+          <input
+            type="text"
+            class="form-control"
+            name="preisKennzeichen"
+            id="field_preisKennzeichen"
+            data-cy="preisKennzeichen"
+            formControlName="preisKennzeichen"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pzn">Pzn</label>
+          <input type="text" class="form-control" name="pzn" id="field_pzn" data-cy="pzn" formControlName="pzn" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_taxe">Taxe</label>
+          <input type="text" class="form-control" name="taxe" id="field_taxe" data-cy="taxe" formControlName="taxe" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_wirkstoffName">Wirkstoff Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="wirkstoffName"
+            id="field_wirkstoffName"
+            data-cy="wirkstoffName"
+            formControlName="wirkstoffName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pCharge">P Charge</label>
+          <select class="form-control" id="field_pCharge" data-cy="pCharge" name="pCharge" formControlName="pCharge">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="pChargeOption.id === editForm.get('pCharge')!.value?.id ? editForm.get('pCharge')!.value : pChargeOption"
+              *ngFor="let pChargeOption of pChargesSharedCollection; trackBy: trackPChargeById"
+            >
+              {{ pChargeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+  "name": "EAenderung",
+  "fields": [
+    {
+      "fieldName": "schluessel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dokuRezept",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dokuArzt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "datum",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "eRezept",
+      "otherEntityRelationshipName": "eAenderung",
+      "relationshipName": "eRezept"
+    }
+  ],
+  "entityTableName": "e_aenderung",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133120"
+}

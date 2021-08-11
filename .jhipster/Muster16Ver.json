@@ -1,0 +1,131 @@
+{
+  "name": "Muster16Ver",
+  "fields": [
+    {
+      "fieldName": "aUnfall",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "abDatum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vrsNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vrtrgsArztNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sprStBedarf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unfall",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "unfallTag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vGeb",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vStat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "verDat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "laNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "noctu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hilf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "impf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kArt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rTyp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rezeptTyp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bgrPfl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bvg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eigBet",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gebFrei",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sonstige",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vkGueltigBis",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16Abg",
+      "otherEntityRelationshipName": "mRezeptId",
+      "relationshipName": "mRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16",
+      "otherEntityRelationshipName": "mRezeptId",
+      "relationshipName": "mRezeptId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "muster_16_ver",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133106"
+}

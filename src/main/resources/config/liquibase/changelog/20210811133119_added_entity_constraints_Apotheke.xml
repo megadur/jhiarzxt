@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Apotheke.
+    -->
+    <changeSet id="20210811133119-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="apotheke_id"
+                                 baseTableName="rel_apotheke__rechenzentrum"
+                                 constraintName="fk_rel_apotheke__rechenzentrum__apotheke_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="apotheke"/>
+
+        <addForeignKeyConstraint baseColumnNames="rechenzentrum_id"
+                                 baseTableName="rel_apotheke__rechenzentrum"
+                                 constraintName="fk_rel_apotheke__rechenzentrum__rechenzentrum_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rechenzentrum"/>
+    </changeSet>
+</databaseChangeLog>

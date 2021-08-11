@@ -1,0 +1,132 @@
+<div>
+  <h2 id="page-heading" data-cy="Muster16VerHeading">
+    <span>Muster 16 Vers</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-muster-16-ver"
+        [routerLink]="['/muster-16-ver/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Muster 16 Ver </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="muster16Vers?.length === 0">
+    <span>No muster16Vers found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="muster16Vers && muster16Vers.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>A Unfall</span></th>
+          <th scope="col"><span>Ab Datum</span></th>
+          <th scope="col"><span>Vrs Nr</span></th>
+          <th scope="col"><span>Vrtrgs Arzt Nr</span></th>
+          <th scope="col"><span>Spr St Bedarf</span></th>
+          <th scope="col"><span>Unfall</span></th>
+          <th scope="col"><span>Unfall Tag</span></th>
+          <th scope="col"><span>V Geb</span></th>
+          <th scope="col"><span>V Stat</span></th>
+          <th scope="col"><span>Ver Dat</span></th>
+          <th scope="col"><span>K Name</span></th>
+          <th scope="col"><span>Kk Ik</span></th>
+          <th scope="col"><span>La Nr</span></th>
+          <th scope="col"><span>Noctu</span></th>
+          <th scope="col"><span>Hilf</span></th>
+          <th scope="col"><span>Impf</span></th>
+          <th scope="col"><span>K Art</span></th>
+          <th scope="col"><span>R Typ</span></th>
+          <th scope="col"><span>Rezept Typ</span></th>
+          <th scope="col"><span>Bgr Pfl</span></th>
+          <th scope="col"><span>Bvg</span></th>
+          <th scope="col"><span>Eig Bet</span></th>
+          <th scope="col"><span>Geb Frei</span></th>
+          <th scope="col"><span>Sonstige</span></th>
+          <th scope="col"><span>Vk Gueltig Bis</span></th>
+          <th scope="col"><span>M Rezept Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let muster16Ver of muster16Vers; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/muster-16-ver', muster16Ver.id, 'view']">{{ muster16Ver.id }}</a>
+          </td>
+          <td>{{ muster16Ver.aUnfall }}</td>
+          <td>{{ muster16Ver.abDatum }}</td>
+          <td>{{ muster16Ver.vrsNr }}</td>
+          <td>{{ muster16Ver.vrtrgsArztNr }}</td>
+          <td>{{ muster16Ver.sprStBedarf }}</td>
+          <td>{{ muster16Ver.unfall }}</td>
+          <td>{{ muster16Ver.unfallTag }}</td>
+          <td>{{ muster16Ver.vGeb }}</td>
+          <td>{{ muster16Ver.vStat }}</td>
+          <td>{{ muster16Ver.verDat }}</td>
+          <td>{{ muster16Ver.kName }}</td>
+          <td>{{ muster16Ver.kkIk }}</td>
+          <td>{{ muster16Ver.laNr }}</td>
+          <td>{{ muster16Ver.noctu }}</td>
+          <td>{{ muster16Ver.hilf }}</td>
+          <td>{{ muster16Ver.impf }}</td>
+          <td>{{ muster16Ver.kArt }}</td>
+          <td>{{ muster16Ver.rTyp }}</td>
+          <td>{{ muster16Ver.rezeptTyp }}</td>
+          <td>{{ muster16Ver.bgrPfl }}</td>
+          <td>{{ muster16Ver.bvg }}</td>
+          <td>{{ muster16Ver.eigBet }}</td>
+          <td>{{ muster16Ver.gebFrei }}</td>
+          <td>{{ muster16Ver.sonstige }}</td>
+          <td>{{ muster16Ver.vkGueltigBis }}</td>
+          <td>
+            <div *ngIf="muster16Ver.mRezeptId">
+              <a [routerLink]="['/muster-16-abg', muster16Ver.mRezeptId?.id, 'view']">{{ muster16Ver.mRezeptId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/muster-16-ver', muster16Ver.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/muster-16-ver', muster16Ver.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(muster16Ver)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

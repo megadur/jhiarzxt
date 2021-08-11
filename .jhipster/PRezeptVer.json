@@ -1,0 +1,95 @@
+{
+  "name": "PRezeptVer",
+  "fields": [
+    {
+      "fieldName": "pRezeptId9",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIkSend",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "arbPlatz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "avsId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bediener",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bvg",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "eStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "erstZeitpunkt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kkIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "laNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vrsNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vrtrgsArztNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vGeb",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vStat",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezeptAbg",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezept",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "p_rezept_ver",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133112"
+}

@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="PStatusInfoHeading">
+    <span>P Status Infos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-status-info"
+        [routerLink]="['/p-status-info/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Status Info </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pStatusInfos?.length === 0">
+    <span>No pStatusInfos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pStatusInfos && pStatusInfos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Status Info Id</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"><span>Apo Ik</span></th>
+          <th scope="col"><span>F Code</span></th>
+          <th scope="col"><span>F Haupt Fehler</span></th>
+          <th scope="col"><span>F Kommentar</span></th>
+          <th scope="col"><span>F Kurz Text</span></th>
+          <th scope="col"><span>F Lang Text</span></th>
+          <th scope="col"><span>F Status</span></th>
+          <th scope="col"><span>F T Code</span></th>
+          <th scope="col"><span>F Wert</span></th>
+          <th scope="col"><span>Faktor</span></th>
+          <th scope="col"><span>Frist Ende</span></th>
+          <th scope="col"><span>Ges Brutto</span></th>
+          <th scope="col"><span>Pos Nr</span></th>
+          <th scope="col"><span>Taxe</span></th>
+          <th scope="col"><span>Zeitpunkt</span></th>
+          <th scope="col"><span>Zuzahlung</span></th>
+          <th scope="col"><span>P Status Info Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pStatusInfo of pStatusInfos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-status-info', pStatusInfo.id, 'view']">{{ pStatusInfo.id }}</a>
+          </td>
+          <td>{{ pStatusInfo.pStatusInfoId }}</td>
+          <td>{{ pStatusInfo.pRezeptId }}</td>
+          <td>{{ pStatusInfo.apoIk }}</td>
+          <td>{{ pStatusInfo.fCode }}</td>
+          <td>{{ pStatusInfo.fHauptFehler }}</td>
+          <td>{{ pStatusInfo.fKommentar }}</td>
+          <td>{{ pStatusInfo.fKurzText }}</td>
+          <td>{{ pStatusInfo.fLangText }}</td>
+          <td>{{ pStatusInfo.fStatus }}</td>
+          <td>{{ pStatusInfo.fTCode }}</td>
+          <td>{{ pStatusInfo.fWert }}</td>
+          <td>{{ pStatusInfo.faktor }}</td>
+          <td>{{ pStatusInfo.fristEnde }}</td>
+          <td>{{ pStatusInfo.gesBrutto }}</td>
+          <td>{{ pStatusInfo.posNr }}</td>
+          <td>{{ pStatusInfo.taxe }}</td>
+          <td>{{ pStatusInfo.zeitpunkt }}</td>
+          <td>{{ pStatusInfo.zuzahlung }}</td>
+          <td>
+            <div *ngIf="pStatusInfo.pStatusInfoId">
+              <a [routerLink]="['/p-rezept', pStatusInfo.pStatusInfoId?.id, 'view']">{{ pStatusInfo.pStatusInfoId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-status-info', pStatusInfo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-status-info', pStatusInfo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pStatusInfo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

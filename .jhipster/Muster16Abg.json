@@ -1,0 +1,63 @@
+{
+  "name": "Muster16Abg",
+  "fields": [
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lieferDat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "aPeriode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "arbPlatz",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "avsId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bediener",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zuzahlung",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gesBrutto",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16Abr",
+      "otherEntityRelationshipName": "mRezeptId",
+      "relationshipName": "mRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "muster16Ver",
+      "otherEntityRelationshipName": "mRezeptId",
+      "relationshipName": "mRezeptId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "muster_16_abg",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133107"
+}

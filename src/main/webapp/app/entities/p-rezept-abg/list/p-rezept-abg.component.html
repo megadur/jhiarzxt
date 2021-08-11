@@ -1,0 +1,108 @@
+<div>
+  <h2 id="page-heading" data-cy="PRezeptAbgHeading">
+    <span>P Rezept Abgs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-rezept-abg"
+        [routerLink]="['/p-rezept-abg/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Rezept Abg </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pRezeptAbgs?.length === 0">
+    <span>No pRezeptAbgs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pRezeptAbgs && pRezeptAbgs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"><span>Geb Frei</span></th>
+          <th scope="col"><span>Ges Brutto</span></th>
+          <th scope="col"><span>Hash Code</span></th>
+          <th scope="col"><span>K Art</span></th>
+          <th scope="col"><span>Noctu</span></th>
+          <th scope="col"><span>P Rezept Typ</span></th>
+          <th scope="col"><span>R Typ</span></th>
+          <th scope="col"><span>Sonstige</span></th>
+          <th scope="col"><span>Spr St Bedarf</span></th>
+          <th scope="col"><span>Ver Dat</span></th>
+          <th scope="col"><span>Vk Gueltig Bis</span></th>
+          <th scope="col"><span>Zuzahlung</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pRezeptAbg of pRezeptAbgs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-rezept-abg', pRezeptAbg.id, 'view']">{{ pRezeptAbg.id }}</a>
+          </td>
+          <td>{{ pRezeptAbg.pRezeptId }}</td>
+          <td>{{ pRezeptAbg.gebFrei }}</td>
+          <td>{{ pRezeptAbg.gesBrutto }}</td>
+          <td>{{ pRezeptAbg.hashCode }}</td>
+          <td>{{ pRezeptAbg.kArt }}</td>
+          <td>{{ pRezeptAbg.noctu }}</td>
+          <td>{{ pRezeptAbg.pRezeptTyp }}</td>
+          <td>{{ pRezeptAbg.rTyp }}</td>
+          <td>{{ pRezeptAbg.sonstige }}</td>
+          <td>{{ pRezeptAbg.sprStBedarf }}</td>
+          <td>{{ pRezeptAbg.verDat }}</td>
+          <td>{{ pRezeptAbg.vkGueltigBis }}</td>
+          <td>{{ pRezeptAbg.zuzahlung }}</td>
+          <td>
+            <div *ngIf="pRezeptAbg.pRezeptId">
+              <a [routerLink]="['/p-rezept-abr', pRezeptAbg.pRezeptId?.id, 'view']">{{ pRezeptAbg.pRezeptId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-abg', pRezeptAbg.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-abg', pRezeptAbg.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pRezeptAbg)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

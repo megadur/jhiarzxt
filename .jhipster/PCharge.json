@@ -1,0 +1,61 @@
+{
+  "name": "PCharge",
+  "fields": [
+    {
+      "fieldName": "pChargeId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "anzahlApplikationen",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chargenNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "herstellerNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "herstellerSchluessel",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "herstellungsDatum",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "pWirkstoff",
+      "otherEntityRelationshipName": "pCharge",
+      "relationshipName": "pWirkstoff"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pRezept",
+      "otherEntityRelationshipName": "pCharge",
+      "relationshipName": "pRezept"
+    }
+  ],
+  "entityTableName": "p_charge",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133115"
+}

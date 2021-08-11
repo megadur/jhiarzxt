@@ -15,7 +15,41 @@
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133105_added_entity_Muster16.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133106_added_entity_Muster16Ver.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133107_added_entity_Muster16Abg.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133108_added_entity_Muster16Abr.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133109_added_entity_MArtikel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133110_added_entity_M16Status.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133111_added_entity_PRezept.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133112_added_entity_PRezeptVer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133113_added_entity_PRezeptAbg.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133114_added_entity_PRezeptAbr.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133115_added_entity_PCharge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133116_added_entity_PWirkstoff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133117_added_entity_PStatusInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133118_added_entity_PStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133119_added_entity_Apotheke.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133120_added_entity_EAenderung.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133121_added_entity_ERezept.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133122_added_entity_EStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133123_added_entity_Lieferung.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133124_added_entity_Rechenzentrum.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20210811133105_added_entity_constraints_Muster16.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133106_added_entity_constraints_Muster16Ver.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133107_added_entity_constraints_Muster16Abg.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133109_added_entity_constraints_MArtikel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133111_added_entity_constraints_PRezept.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133112_added_entity_constraints_PRezeptVer.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133113_added_entity_constraints_PRezeptAbg.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133115_added_entity_constraints_PCharge.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133116_added_entity_constraints_PWirkstoff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133117_added_entity_constraints_PStatusInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133119_added_entity_constraints_Apotheke.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133120_added_entity_constraints_EAenderung.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133121_added_entity_constraints_ERezept.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20210811133123_added_entity_constraints_Lieferung.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

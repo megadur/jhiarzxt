@@ -1,0 +1,32 @@
+{
+  "name": "Rechenzentrum",
+  "fields": [
+    {
+      "fieldName": "iD",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "apotheke",
+      "otherEntityRelationshipName": "rechenzentrum",
+      "relationshipName": "apotheke",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "rechenzentrum",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133124"
+}

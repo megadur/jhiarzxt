@@ -1,0 +1,119 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-muster-16-heading" data-cy="Muster16CreateUpdateHeading">Create or edit a Muster 16</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mRezeptId">M Rezept Id</label>
+          <input type="text" class="form-control" name="mRezeptId" id="field_mRezeptId" data-cy="mRezeptId" formControlName="mRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferungId">Lieferung Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="lieferungId"
+            id="field_lieferungId"
+            data-cy="lieferungId"
+            formControlName="lieferungId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_m16Status">M 16 Status</label>
+          <input type="text" class="form-control" name="m16Status" id="field_m16Status" data-cy="m16Status" formControlName="m16Status" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mMuster16Id">M Muster 16 Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="mMuster16Id"
+            id="field_mMuster16Id"
+            data-cy="mMuster16Id"
+            formControlName="mMuster16Id"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIkSend">Apo Ik Send</label>
+          <input type="text" class="form-control" name="apoIkSend" id="field_apoIkSend" data-cy="apoIkSend" formControlName="apoIkSend" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIkSnd">Apo Ik Snd</label>
+          <input type="text" class="form-control" name="apoIkSnd" id="field_apoIkSnd" data-cy="apoIkSnd" formControlName="apoIkSnd" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_m16Status">M 16 Status</label>
+          <select class="form-control" id="field_m16Status" data-cy="m16Status" name="m16Status" formControlName="m16Status">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="m16StatusOption.id === editForm.get('m16Status')!.value?.id ? editForm.get('m16Status')!.value : m16StatusOption"
+              *ngFor="let m16StatusOption of m16StatusesCollection; trackBy: trackM16StatusById"
+            >
+              {{ m16StatusOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_mRezeptId">M Rezept Id</label>
+          <select class="form-control" id="field_mRezeptId" data-cy="mRezeptId" name="mRezeptId" formControlName="mRezeptId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                muster16VerOption.id === editForm.get('mRezeptId')!.value?.id ? editForm.get('mRezeptId')!.value : muster16VerOption
+              "
+              *ngFor="let muster16VerOption of mRezeptIdsCollection; trackBy: trackMuster16VerById"
+            >
+              {{ muster16VerOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_lieferungId">Lieferung Id</label>
+          <select class="form-control" id="field_lieferungId" data-cy="lieferungId" name="lieferungId" formControlName="lieferungId">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                lieferungOption.id === editForm.get('lieferungId')!.value?.id ? editForm.get('lieferungId')!.value : lieferungOption
+              "
+              *ngFor="let lieferungOption of lieferungsSharedCollection; trackBy: trackLieferungById"
+            >
+              {{ lieferungOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

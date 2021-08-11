@@ -1,0 +1,64 @@
+{
+  "name": "ERezept",
+  "fields": [
+    {
+      "fieldName": "iD",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dokVer",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "abgInfo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "abgDatum",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "abgGesZuzahl",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "abgGesBrutto",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "abgVertragskz",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "eStatus",
+      "otherEntityRelationshipName": "eStatusId",
+      "relationshipName": "eStatus",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "eAenderung",
+      "otherEntityRelationshipName": "eRezept",
+      "relationshipName": "eAenderung"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "lieferung",
+      "otherEntityRelationshipName": "eRezept",
+      "relationshipName": "lieferungId"
+    }
+  ],
+  "entityTableName": "e_rezept",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133121"
+}

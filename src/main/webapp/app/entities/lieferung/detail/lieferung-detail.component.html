@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="lieferung">
+      <h2 data-cy="lieferungDetailsHeading"><span>Lieferung</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ lieferung.id }}</span>
+        </dd>
+        <dt><span>I D</span></dt>
+        <dd>
+          <span>{{ lieferung.iD }}</span>
+        </dd>
+        <dt><span>Datum</span></dt>
+        <dd>
+          <span>{{ lieferung.datum | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ lieferung.apoIk }}</span>
+        </dd>
+        <dt><span>Apotheke</span></dt>
+        <dd>
+          <div *ngIf="lieferung.apotheke">
+            <a [routerLink]="['/apotheke', lieferung.apotheke?.id, 'view']">{{ lieferung.apotheke?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/lieferung', lieferung.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

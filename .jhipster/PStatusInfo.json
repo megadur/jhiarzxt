@@ -1,0 +1,95 @@
+{
+  "name": "PStatusInfo",
+  "fields": [
+    {
+      "fieldName": "pStatusInfoId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fHauptFehler",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fKommentar",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fKurzText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fLangText",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fTCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fWert",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "faktor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fristEnde",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gesBrutto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "posNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zeitpunkt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zuzahlung",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "pRezept",
+      "otherEntityRelationshipName": "pStatusInfo",
+      "relationshipName": "pStatusInfoId"
+    }
+  ],
+  "entityTableName": "p_status_info",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133117"
+}

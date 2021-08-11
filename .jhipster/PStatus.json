@@ -1,0 +1,32 @@
+{
+  "name": "PStatus",
+  "fields": [
+    {
+      "fieldName": "wert",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "beschreibung",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezept",
+      "otherEntityRelationshipName": "pStatus",
+      "relationshipName": "pStatusId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "p_status",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133118"
+}

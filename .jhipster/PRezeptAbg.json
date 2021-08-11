@@ -1,0 +1,83 @@
+{
+  "name": "PRezeptAbg",
+  "fields": [
+    {
+      "fieldName": "pRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gebFrei",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gesBrutto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hashCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "kArt",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "noctu",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pRezeptTyp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rTyp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sonstige",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sprStBedarf",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "verDat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vkGueltigBis",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zuzahlung",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezeptAbr",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "pRezeptVer",
+      "otherEntityRelationshipName": "pRezeptId",
+      "relationshipName": "pRezeptId",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "p_rezept_abg",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133113"
+}

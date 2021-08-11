@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity Muster16.
+    -->
+    <changeSet id="20210811133105-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="m16status_id"
+                                 baseTableName="muster_16"
+                                 constraintName="fk_muster_16__m16status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="m_16_status"/>
+
+        <addForeignKeyConstraint baseColumnNames="m_rezept_id_id"
+                                 baseTableName="muster_16"
+                                 constraintName="fk_muster_16__m_rezept_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="muster_16_ver"/>
+
+        <addForeignKeyConstraint baseColumnNames="lieferung_id_id"
+                                 baseTableName="muster_16"
+                                 constraintName="fk_muster_16__lieferung_id_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lieferung"/>
+    </changeSet>
+</databaseChangeLog>

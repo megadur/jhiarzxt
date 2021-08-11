@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="pWirkstoff">
+      <h2 data-cy="pWirkstoffDetailsHeading"><span>P Wirkstoff</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.id }}</span>
+        </dd>
+        <dt><span>P Wirkstoff Id</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.pWirkstoffId }}</span>
+        </dd>
+        <dt><span>P Charge Id</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.pChargeId }}</span>
+        </dd>
+        <dt><span>Apo Ik</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.apoIk }}</span>
+        </dd>
+        <dt><span>Faktor</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.faktor }}</span>
+        </dd>
+        <dt><span>Faktor Kennzeichen</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.faktorKennzeichen }}</span>
+        </dd>
+        <dt><span>Notiz</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.notiz }}</span>
+        </dd>
+        <dt><span>P Pos Nr</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.pPosNr }}</span>
+        </dd>
+        <dt><span>Preis Kennzeichen</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.preisKennzeichen }}</span>
+        </dd>
+        <dt><span>Pzn</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.pzn }}</span>
+        </dd>
+        <dt><span>Taxe</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.taxe }}</span>
+        </dd>
+        <dt><span>Wirkstoff Name</span></dt>
+        <dd>
+          <span>{{ pWirkstoff.wirkstoffName }}</span>
+        </dd>
+        <dt><span>P Charge</span></dt>
+        <dd>
+          <div *ngIf="pWirkstoff.pCharge">
+            <a [routerLink]="['/p-charge', pWirkstoff.pCharge?.id, 'view']">{{ pWirkstoff.pCharge?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/p-wirkstoff', pWirkstoff.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

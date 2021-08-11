@@ -1,0 +1,164 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-p-status-info-heading" data-cy="PStatusInfoCreateUpdateHeading">Create or edit a P Status Info</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pStatusInfoId">P Status Info Id</label>
+          <input
+            type="text"
+            class="form-control"
+            name="pStatusInfoId"
+            id="field_pStatusInfoId"
+            data-cy="pStatusInfoId"
+            formControlName="pStatusInfoId"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pRezeptId">P Rezept Id</label>
+          <input type="text" class="form-control" name="pRezeptId" id="field_pRezeptId" data-cy="pRezeptId" formControlName="pRezeptId" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_apoIk">Apo Ik</label>
+          <input type="text" class="form-control" name="apoIk" id="field_apoIk" data-cy="apoIk" formControlName="apoIk" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fCode">F Code</label>
+          <input type="text" class="form-control" name="fCode" id="field_fCode" data-cy="fCode" formControlName="fCode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fHauptFehler">F Haupt Fehler</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fHauptFehler"
+            id="field_fHauptFehler"
+            data-cy="fHauptFehler"
+            formControlName="fHauptFehler"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fKommentar">F Kommentar</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fKommentar"
+            id="field_fKommentar"
+            data-cy="fKommentar"
+            formControlName="fKommentar"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fKurzText">F Kurz Text</label>
+          <input type="text" class="form-control" name="fKurzText" id="field_fKurzText" data-cy="fKurzText" formControlName="fKurzText" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fLangText">F Lang Text</label>
+          <input type="text" class="form-control" name="fLangText" id="field_fLangText" data-cy="fLangText" formControlName="fLangText" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fStatus">F Status</label>
+          <input type="text" class="form-control" name="fStatus" id="field_fStatus" data-cy="fStatus" formControlName="fStatus" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fTCode">F T Code</label>
+          <input type="text" class="form-control" name="fTCode" id="field_fTCode" data-cy="fTCode" formControlName="fTCode" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fWert">F Wert</label>
+          <input type="text" class="form-control" name="fWert" id="field_fWert" data-cy="fWert" formControlName="fWert" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_faktor">Faktor</label>
+          <input type="text" class="form-control" name="faktor" id="field_faktor" data-cy="faktor" formControlName="faktor" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_fristEnde">Frist Ende</label>
+          <input type="text" class="form-control" name="fristEnde" id="field_fristEnde" data-cy="fristEnde" formControlName="fristEnde" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_gesBrutto">Ges Brutto</label>
+          <input type="text" class="form-control" name="gesBrutto" id="field_gesBrutto" data-cy="gesBrutto" formControlName="gesBrutto" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_posNr">Pos Nr</label>
+          <input type="text" class="form-control" name="posNr" id="field_posNr" data-cy="posNr" formControlName="posNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_taxe">Taxe</label>
+          <input type="text" class="form-control" name="taxe" id="field_taxe" data-cy="taxe" formControlName="taxe" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_zeitpunkt">Zeitpunkt</label>
+          <input type="text" class="form-control" name="zeitpunkt" id="field_zeitpunkt" data-cy="zeitpunkt" formControlName="zeitpunkt" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_zuzahlung">Zuzahlung</label>
+          <input type="text" class="form-control" name="zuzahlung" id="field_zuzahlung" data-cy="zuzahlung" formControlName="zuzahlung" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_pStatusInfoId">P Status Info Id</label>
+          <select
+            class="form-control"
+            id="field_pStatusInfoId"
+            data-cy="pStatusInfoId"
+            name="pStatusInfoId"
+            formControlName="pStatusInfoId"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                pRezeptOption.id === editForm.get('pStatusInfoId')!.value?.id ? editForm.get('pStatusInfoId')!.value : pRezeptOption
+              "
+              *ngFor="let pRezeptOption of pRezeptsSharedCollection; trackBy: trackPRezeptById"
+            >
+              {{ pRezeptOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

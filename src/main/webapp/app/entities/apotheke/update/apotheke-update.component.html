@@ -1,0 +1,105 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-apotheke-heading" data-cy="ApothekeCreateUpdateHeading">Create or edit a Apotheke</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_iK">I K</label>
+          <input type="number" class="form-control" name="iK" id="field_iK" data-cy="iK" formControlName="iK" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_inhaber">Inhaber</label>
+          <input type="text" class="form-control" name="inhaber" id="field_inhaber" data-cy="inhaber" formControlName="inhaber" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_countryCode">Country Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="countryCode"
+            id="field_countryCode"
+            data-cy="countryCode"
+            formControlName="countryCode"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_plz">Plz</label>
+          <input type="text" class="form-control" name="plz" id="field_plz" data-cy="plz" formControlName="plz" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_ort">Ort</label>
+          <input type="text" class="form-control" name="ort" id="field_ort" data-cy="ort" formControlName="ort" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_str">Str</label>
+          <input type="text" class="form-control" name="str" id="field_str" data-cy="str" formControlName="str" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_hausNr">Haus Nr</label>
+          <input type="text" class="form-control" name="hausNr" id="field_hausNr" data-cy="hausNr" formControlName="hausNr" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_addrZusatz">Addr Zusatz</label>
+          <input
+            type="text"
+            class="form-control"
+            name="addrZusatz"
+            id="field_addrZusatz"
+            data-cy="addrZusatz"
+            formControlName="addrZusatz"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="field_rechenzentrums">Rechenzentrum</label>
+          <select
+            class="form-control"
+            id="field_rechenzentrums"
+            data-cy="rechenzentrum"
+            multiple
+            name="rechenzentrums"
+            formControlName="rechenzentrums"
+          >
+            <option
+              [ngValue]="getSelectedRechenzentrum(rechenzentrumOption, editForm.get('rechenzentrums')!.value)"
+              *ngFor="let rechenzentrumOption of rechenzentrumsSharedCollection; trackBy: trackRechenzentrumById"
+            >
+              {{ rechenzentrumOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

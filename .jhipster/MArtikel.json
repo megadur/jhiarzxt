@@ -1,0 +1,67 @@
+{
+  "name": "MArtikel",
+  "fields": [
+    {
+      "fieldName": "mArtikelId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mRezeptId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apoIk",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "autidem",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "faktor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "hilfsmittelNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "muster16Id",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "posNr",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pzn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taxe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vZeile",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "muster16",
+      "otherEntityRelationshipName": "mArtikel",
+      "relationshipName": "muster16"
+    }
+  ],
+  "entityTableName": "m_artikel",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210811133109"
+}

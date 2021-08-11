@@ -1,0 +1,84 @@
+<div>
+  <h2 id="page-heading" data-cy="PRezeptAbrHeading">
+    <span>P Rezept Abrs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-rezept-abr"
+        [routerLink]="['/p-rezept-abr/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Rezept Abr </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pRezeptAbrs?.length === 0">
+    <span>No pRezeptAbrs found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pRezeptAbrs && pRezeptAbrs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"><span>Betrag Rab A</span></th>
+          <th scope="col"><span>Betrag Rab H</span></th>
+          <th scope="col"><span>Betrag Apo Ausz</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pRezeptAbr of pRezeptAbrs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-rezept-abr', pRezeptAbr.id, 'view']">{{ pRezeptAbr.id }}</a>
+          </td>
+          <td>{{ pRezeptAbr.pRezeptId }}</td>
+          <td>{{ pRezeptAbr.betragRabA }}</td>
+          <td>{{ pRezeptAbr.betragRabH }}</td>
+          <td>{{ pRezeptAbr.betragApoAusz }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-abr', pRezeptAbr.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept-abr', pRezeptAbr.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pRezeptAbr)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

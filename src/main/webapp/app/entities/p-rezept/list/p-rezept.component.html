@@ -1,0 +1,104 @@
+<div>
+  <h2 id="page-heading" data-cy="PRezeptHeading">
+    <span>P Rezepts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-p-rezept"
+        [routerLink]="['/p-rezept/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new P Rezept </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="pRezepts?.length === 0">
+    <span>No pRezepts found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="pRezepts && pRezepts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"><span>Lieferdat</span></th>
+          <th scope="col"><span>Lieferung Id</span></th>
+          <th scope="col"><span>A Periode</span></th>
+          <th scope="col"><span>Ab Datum</span></th>
+          <th scope="col"><span>P Status</span></th>
+          <th scope="col"><span>P Rezept Id</span></th>
+          <th scope="col"><span>Lieferung Id</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pRezept of pRezepts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/p-rezept', pRezept.id, 'view']">{{ pRezept.id }}</a>
+          </td>
+          <td>{{ pRezept.pRezeptId }}</td>
+          <td>{{ pRezept.lieferdat }}</td>
+          <td>{{ pRezept.lieferungId }}</td>
+          <td>{{ pRezept.aPeriode }}</td>
+          <td>{{ pRezept.abDatum }}</td>
+          <td>
+            <div *ngIf="pRezept.pStatus">
+              <a [routerLink]="['/p-status', pRezept.pStatus?.id, 'view']">{{ pRezept.pStatus?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="pRezept.pRezeptId">
+              <a [routerLink]="['/p-rezept-ver', pRezept.pRezeptId?.id, 'view']">{{ pRezept.pRezeptId?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="pRezept.lieferungId">
+              <a [routerLink]="['/lieferung', pRezept.lieferungId?.id, 'view']">{{ pRezept.lieferungId?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept', pRezept.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/p-rezept', pRezept.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(pRezept)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

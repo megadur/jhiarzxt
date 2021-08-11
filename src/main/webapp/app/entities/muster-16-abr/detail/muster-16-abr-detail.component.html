@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="muster16Abr">
+      <h2 data-cy="muster16AbrDetailsHeading"><span>Muster 16 Abr</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ muster16Abr.id }}</span>
+        </dd>
+        <dt><span>Betrag Rab A</span></dt>
+        <dd>
+          <span>{{ muster16Abr.betragRabA }}</span>
+        </dd>
+        <dt><span>Betrag Rab H</span></dt>
+        <dd>
+          <span>{{ muster16Abr.betragRabH }}</span>
+        </dd>
+        <dt><span>Betrag Apo Ausz</span></dt>
+        <dd>
+          <span>{{ muster16Abr.betragApoAusz }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/muster-16-abr', muster16Abr.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
